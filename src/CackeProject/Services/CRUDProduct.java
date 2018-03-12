@@ -1,10 +1,6 @@
 package CackeProject.Services;
 
-import CackeProject.Utils.MyConnection;
-import CackeProject.entities.Product;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import CackeProject.Entities.Product;
 
 
 public class CRUDProduct {
