@@ -4,16 +4,19 @@ import CackeProject.Utils.DataBase;
 import CackeProject.Entities.User;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+/**
+ * Manipulation of Users
+ */
 
 public class CRUDUser {
     /**
-     *
-     * @param user
+     * Add User
+     * @param user User to add
      */
     public void addUser(User user) {
         String query="INSERT INTO User(id,name,surname) values(?,?,?)";
@@ -31,8 +34,8 @@ public class CRUDUser {
     }
 
     /**
-     *
-     * @param id
+     * Delete User
+     * @param id User id to Delete
      */
     public void deleteUser(String id){
         String query="DELETE FROM User where id = ?";
@@ -44,11 +47,19 @@ public class CRUDUser {
             e.printStackTrace();
         }
     }
-    public void updateUser(){
-        String query="UPDATE USER SET nom=? where id=? ";
+
+    /**
+     * Update a User
+     * @param user New User
+     * @param id User id to Update
+     */
+    public void updateUser(User user,String id){
+        String query="UPDATE User SET name=? , surname=? where id=? ";
         try {
         PreparedStatement statement= DataBase.getInstance().getCnx().prepareStatement(query);
-        statement.setInt(2, 3);
+        statement.setString(1, user.getName());
+        statement.setString(2, user.getSurname());
+        statement.setString(3,id);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,20 +67,33 @@ public class CRUDUser {
     }
 
     /**
-     *
-     * @return
+     * Show all Users
+     * @return List of Users
      */
-    public ResultSet showUser(){
-        String query = "SELECT*FROM USER";
+    public List<User> showUser(){
+        List<User> myList = new ArrayList<>();
         try {
-        Statement statement= DataBase.getInstance().getCnx().createStatement();
-            return statement.executeQuery(query);
+            String query = "SELECT * FROM User";
+            Statement statement= DataBase.getInstance().getCnx().createStatement();
+            ResultSet result = statement.executeQuery(query);
+            while(result.next()){
+                User user = new User();
+                user.setName(result.getString(2));
+                user.setSurname(result.getString(3));
+                myList.add(user);
+            }
+            return myList;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
-         return null;
+        return myList;
     }
 
+    /**
+     * Show a specific User
+     * @param id User id to show
+     * @return
+     */
     public ResultSet showUser(String id){
         String query = "SELECT * FROM User WHERE id = ' ? '";
         try {

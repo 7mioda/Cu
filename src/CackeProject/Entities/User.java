@@ -1,13 +1,15 @@
 package CackeProject.Entities;
 
-
-import CackeProject.Services.CRUDUser;
-
 public class User{
     private String name;
     private String surname;
-    public static CRUDUser CRUD = null;
 
+    /**
+     * Default Construct
+     */
+    public User() {
+
+    }
     /**
      *
      * @param name name of user
@@ -16,9 +18,6 @@ public class User{
     public User(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        if(User.CRUD==null){
-            User.CRUD = new CRUDUser();
-        }
     }
 
     /**

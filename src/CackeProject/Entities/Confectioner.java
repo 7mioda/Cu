@@ -1,6 +1,8 @@
 package CackeProject.Entities;
 
-public class Confectioner {
+public class Confectioner extends User{
+
+    private String Adress;
 
 
 }
