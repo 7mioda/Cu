@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Manipulation of Users
@@ -20,14 +19,13 @@ public class CRUDProduct {
      * @param product to Add
      */
     public void addProduct(Product product) {
-        String query="INSERT INTO Product(id,price,quantity) values(?,?,?)";
+        String query="INSERT INTO CapCake.Product (price,quantity,category) values(?,?,?)";
 
         try {
             PreparedStatement statement=(PreparedStatement) DataBase.getInstance().getCnx().prepareStatement(query);
-            statement.setObject(1, UUID.randomUUID());
-            statement.setDouble(2, product.getPrice());
-            statement.setFloat(3,product.getQuantity());
-
+            statement.setDouble(1, product.getPrice());
+            statement.setFloat(2,product.getQuantity());
+            statement.setObject(3, product.getCategory().getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -40,7 +38,7 @@ public class CRUDProduct {
      */
     public void deleteProduct(String id){
         try {
-            String query="DELETE FROM Product where id = ?";
+            String query="DELETE FROM CapCake.Product where id = ?";
             PreparedStatement statement=(PreparedStatement) DataBase.getInstance().getCnx().prepareStatement(query);
             statement.setString(1,id);
             statement.executeUpdate();
@@ -55,11 +53,11 @@ public class CRUDProduct {
      * @param id of product to Update
      */
     public void updateProduct(Product product,String id){
-        String query="UPDATE Product SET price=? , quantity=? where id=? ";
+        String query="UPDATE CapCake.Product SET price=? , quantity=? where id=? ";
         try {
             PreparedStatement statement= DataBase.getInstance().getCnx().prepareStatement(query);
-            statement.setString(1, product.getPrice());
-            statement.setString(2, product.getQuantity());
+            statement.setDouble(1, product.getPrice());
+            statement.setFloat(2, product.getQuantity());
             statement.setString(3,id);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -74,16 +72,15 @@ public class CRUDProduct {
     public List<Product> showProduct(){
         List<Product> myList = new ArrayList<>();
         try {
-            String query = "SELECT * FROM Product";
+            String query = "SELECT * FROM CapCake.Product";
             Statement statement= DataBase.getInstance().getCnx().createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()){
                 Product product = new Product();
-                product.setPrice(result.getString(2));
-                product.setQuantity(result.getString(3));
+                product.setPrice(result.getDouble(2));
+                product.setQuantity(result.getFloat(3));
                 myList.add(product);
             }
-            return myList;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -96,19 +93,19 @@ public class CRUDProduct {
      * @return
      */
     public Product showProduct(String id){
-        String query = "SELECT * FROM Product WHERE id = ' ? '";
+        Product product = new Product();
         try {
+            String query = "SELECT * FROM CapCake.Product WHERE id = ' ? '";
             PreparedStatement statement= DataBase.getInstance().getCnx().prepareStatement(query);
             statement.setString(1,id);
             ResultSet result = statement.executeQuery(query);
-            Product product = new Product();
-            product.setPrice(result.getString(2));
-            product.setQuantity(result.getString(3));
+            product.setPrice(result.getDouble(2));
+            product.setQuantity(result.getFloat(3));
             return product;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return product;
     }
 
 }

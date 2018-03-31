@@ -3,6 +3,7 @@ package CackeProject.Entities;
 
 public class Product {
     private Category Category;
+    private List<Ingredient> Ingredient;
     private double Price;
     private float Quantity;
 

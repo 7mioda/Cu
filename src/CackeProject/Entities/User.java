@@ -3,53 +3,61 @@ package CackeProject.Entities;
 public class User{
     private String name;
     private String surname;
-
+    private String Adress;
+    private String PhoneNum;
+    private String Email;
     /**
      * Default Construct
      */
     public User() {
 
     }
-    /**
-     *
-     * @param name name of user
-     * @param surname surname of user
-     */
-    public User(String name, String surname) {
+
+    public User(String name, String surname, String adress, String phoneNum, String email) {
         this.name = name;
         this.surname = surname;
+        Adress = adress;
+        PhoneNum = phoneNum;
+        Email = email;
     }
-
-    /**
-     *
-     * @return The name of user
-     */
 
     public String getName() {
         return name;
     }
 
-    /**
-     * Set the name of user
-     * @param name name of user
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     *
-     * @return The surname of user
-     */
     public String getSurname() {
         return surname;
     }
 
-    /**
-     * Set the surname of user
-     * @param surname surname of user
-     */
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getAdress() {
+        return Adress;
+    }
+
+    public void setAdress(String adress) {
+        Adress = adress;
+    }
+
+    public String getPhoneNum() {
+        return PhoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        PhoneNum = phoneNum;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 }

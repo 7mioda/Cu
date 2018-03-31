@@ -8,6 +8,8 @@ public class Note {
     private int Rank;
     private String Post;
 
+
+
     /**
      *
      * @param rank
