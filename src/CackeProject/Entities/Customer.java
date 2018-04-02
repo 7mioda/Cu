@@ -3,5 +3,12 @@ package CackeProject.Entities;
 
 public class Customer extends User{
 
-    static final String role = "customer";
+    private static final String role = "customer";
+
+    public Customer() {
+
+    }
+    public static String getRole() {
+        return role;
+    }
 }

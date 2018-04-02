@@ -1,23 +1,40 @@
 package CackeProject.Entities;
 
-
 /**
  * User's product note and rank
  */
 public class Note {
+    private Product product;
+    private User user;
     private int Rank;
     private String Post;
 
 
 
+
+    public Note(){
+
+    }
     /**
      *
      * @param rank
      * @param post
      */
-    public Note(int rank, String post) {
-        Rank = rank;
-        Post = post;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     /**

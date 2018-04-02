@@ -75,15 +75,17 @@ public class CRUDCategory {
     }
 
 
-    public Category showCategory(String id){
+    public Category showCategory(int id){
         Category category = new Category();
         try {
-            String query = "SELECT * FROM CapCake.Category WHERE id = ' ? '";
+            String query = "SELECT * FROM CapCake.Category WHERE id = ?";
             PreparedStatement statement= DataBase.getInstance().getCnx().prepareStatement(query);
-            statement.setString(1,id);
-            ResultSet result = statement.executeQuery(query);
-            category.setDesignation(result.getString(1));
-            category.setUnit(result.getString(2));
+            statement.setInt(1,id);
+            ResultSet result = statement.executeQuery();
+            if(result.next()){
+                category.setDesignation(result.getString(1));
+                category.setUnit(result.getString(2));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

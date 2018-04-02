@@ -1,21 +1,47 @@
-import CackeProject.Entities.Category;
-import CackeProject.Entities.Product;
-import CackeProject.Services.CRUDCategory;
-import CackeProject.Services.CRUDProduct;
+import CackeProject.Entities.*;
+import CackeProject.Services.*;
 
-import java.util.List;
 
 public class MyMain {
     public static void main(String[] args) {
-        Category category = new Category();
-        CRUDCategory crudCategory = new CRUDCategory();
-        List<Category> list = crudCategory.showCategory();
-        category = list.stream().findFirst().get();
-        Product product = new Product();
-        product.setPrice(1500);
-        product.setQuantity(1500);
-        product.setCategory(category);
+
+        /*CRUDProduct crudProduct = new CRUDProduct();
+        CRUDOrder crudOrder = new CRUDOrder();
+        Order order = new Order();
+        CRUDOrderLine crudOrderLine = new CRUDOrderLine();
+        CRUDUser crudUser = new CRUDUser();
+        User user = crudUser.showUser().stream().findFirst().get();
+        Product product = crudProduct.showProduct().stream().findFirst().get();
+        order = crudOrder.showOrder(1);
+        order.setUser(user);
+        crudOrder.addOrder(order);
+        OrderLine orderLine = new OrderLine();
+        orderLine.setQuantity(10);
+        orderLine.setOrder(order);
+        orderLine.setProduct(product);
+        crudOrderLine.addOrderLine(orderLine);*/
         CRUDProduct crudProduct = new CRUDProduct();
-        crudProduct.addProduct(product);
+        CRUDOrder crudOrder = new CRUDOrder();
+        CRUDUser crudUser = new CRUDUser();
+        CRUDOrderLine crudOrderLine = new CRUDOrderLine();
+        CRUDCategory crudCategory = new CRUDCategory();
+        CRUDIngredient crudIngredient = new CRUDIngredient();
+
+        OrderLine orderLine = new OrderLine();
+        orderLine.setQuantity(10);
+        orderLine.setProduct(crudProduct.showProduct(14));
+        orderLine.setOrder(crudOrder.showOrder(33));
+        crudOrderLine.addOrderLine(orderLine);
+
+
+
+
+
+
+
+
+
+
+
     }
 }

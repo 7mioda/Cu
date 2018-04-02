@@ -19,13 +19,14 @@ public class CRUDProduct {
      * @param product to Add
      */
     public void addProduct(Product product) {
-        String query="INSERT INTO CapCake.Product (price,quantity,category) values(?,?,?)";
+        String query="INSERT INTO CapCake.Product (price,quantity,name,category) values(?,?,?,?)";
 
         try {
             PreparedStatement statement=(PreparedStatement) DataBase.getInstance().getCnx().prepareStatement(query);
             statement.setDouble(1, product.getPrice());
             statement.setFloat(2,product.getQuantity());
-            statement.setObject(3, product.getCategory().getId());
+            statement.setString(3,product.getName());
+            statement.setObject(4, product.getCategory().getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,15 +93,16 @@ public class CRUDProduct {
      * @param id Product id to show
      * @return
      */
-    public Product showProduct(String id){
+    public Product showProduct(int id){
         Product product = new Product();
         try {
-            String query = "SELECT * FROM CapCake.Product WHERE id = ' ? '";
-            PreparedStatement statement= DataBase.getInstance().getCnx().prepareStatement(query);
-            statement.setString(1,id);
-            ResultSet result = statement.executeQuery(query);
-            product.setPrice(result.getDouble(2));
-            product.setQuantity(result.getFloat(3));
+            String query = "SELECT * FROM Product WHERE id= ? ";
+            PreparedStatement statement =  DataBase.getInstance().getCnx().prepareStatement(query);
+            statement.setInt(1,id);
+            ResultSet result = statement.executeQuery();
+            product.setId(result.getInt(1));
+            product.setPrice(result.getDouble(3));
+            product.setQuantity(result.getFloat(4));
             return product;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -3,15 +3,20 @@ package CackeProject.Entities;
 
 public class Product {
     private Category Category;
-    private List<Ingredient> Ingredient;
+    private Recipe Recipe;
+    private int id;
+    private String name;
     private double Price;
     private float Quantity;
 
     public Product(){
 
     }
-    public Product(CackeProject.Entities.Category category, double price, float quantity) {
+
+    public Product(CackeProject.Entities.Category category, CackeProject.Entities.Recipe recipe, String name, double price, float quantity) {
         Category = category;
+        Recipe = recipe;
+        this.name = name;
         Price = price;
         Quantity = quantity;
     }
@@ -22,6 +27,14 @@ public class Product {
 
     public void setCategory(CackeProject.Entities.Category category) {
         Category = category;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getPrice() {
@@ -38,6 +51,22 @@ public class Product {
 
     public void setQuantity(float quantity) {
         Quantity = quantity;
+    }
+
+    public CackeProject.Entities.Recipe getRecipe() {
+        return Recipe;
+    }
+
+    public void setRecipe(CackeProject.Entities.Recipe recipe) {
+        Recipe = recipe;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
