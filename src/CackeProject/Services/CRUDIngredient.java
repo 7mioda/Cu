@@ -96,12 +96,12 @@ public class CRUDIngredient {
      * @param id ingredient id to show
      * @return
      */
-    public Ingredient showingredient(String id){
+    public Ingredient showingredient(int id){
         Ingredient ingredient = new Ingredient();
         try {
             String query = "SELECT * FROM CapCake.Ingredient WHERE id = ? ";
             PreparedStatement statement= DataBase.getInstance().getCnx().prepareStatement(query);
-            statement.setString(1,id);
+            statement.setInt(1,id);
             ResultSet result = statement.executeQuery();
             ingredient.setId(result.getInt(1));
             ingredient.setName(result.getString(2));

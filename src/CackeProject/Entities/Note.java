@@ -15,11 +15,6 @@ public class Note {
     public Note(){
 
     }
-    /**
-     *
-     * @param rank
-     * @param post
-     */
 
     public User getUser() {
         return user;
@@ -37,34 +32,20 @@ public class Note {
         this.product = product;
     }
 
-    /**
-     *
-     * @return
-     */
+
     public int getRank() {
         return Rank;
     }
 
-    /**
-     *
-     * @param rank
-     */
+
     public void setRank(int rank) {
         Rank = rank;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getPost() {
         return Post;
     }
 
-    /**
-     *
-     * @param post
-     */
     public void setPost(String post) {
         Post = post;
     }

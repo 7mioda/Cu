@@ -1,47 +1,31 @@
-import CackeProject.Entities.*;
-import CackeProject.Services.*;
+import CackeProject.Services.SMSApi;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 
-public class MyMain {
+
+
+/*public class MyMain extends Application {
+
     public static void main(String[] args) {
+        launch(args);
+    }
 
-        /*CRUDProduct crudProduct = new CRUDProduct();
-        CRUDOrder crudOrder = new CRUDOrder();
-        Order order = new Order();
-        CRUDOrderLine crudOrderLine = new CRUDOrderLine();
-        CRUDUser crudUser = new CRUDUser();
-        User user = crudUser.showUser().stream().findFirst().get();
-        Product product = crudProduct.showProduct().stream().findFirst().get();
-        order = crudOrder.showOrder(1);
-        order.setUser(user);
-        crudOrder.addOrder(order);
-        OrderLine orderLine = new OrderLine();
-        orderLine.setQuantity(10);
-        orderLine.setOrder(order);
-        orderLine.setProduct(product);
-        crudOrderLine.addOrderLine(orderLine);*/
-        CRUDProduct crudProduct = new CRUDProduct();
-        CRUDOrder crudOrder = new CRUDOrder();
-        CRUDUser crudUser = new CRUDUser();
-        CRUDOrderLine crudOrderLine = new CRUDOrderLine();
-        CRUDCategory crudCategory = new CRUDCategory();
-        CRUDIngredient crudIngredient = new CRUDIngredient();
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/CackeProject/GUI/fxml/users/Registration.fxml"));
+        stage.setTitle("CupCacke");
+        stage.setScene(new Scene(root,1000,650));
+        stage.show();
+    }
+}*/
+public class MyMain {
 
-        OrderLine orderLine = new OrderLine();
-        orderLine.setQuantity(10);
-        orderLine.setProduct(crudProduct.showProduct(14));
-        orderLine.setOrder(crudOrder.showOrder(33));
-        crudOrderLine.addOrderLine(orderLine);
-
-
-
-
-
-
-
-
-
-
-
+    public static void main(String[] args) {
+        SMSApi.sendSms("+21699213630","rakez%20sdf%20sdf");
     }
 }

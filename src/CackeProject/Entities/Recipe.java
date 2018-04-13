@@ -6,7 +6,6 @@ public class Recipe {
     private List<Ingredient> ingredients;
     private Product product;
     private int id;
-    private float quantity;
 
     public Recipe() {
 
@@ -15,7 +14,6 @@ public class Recipe {
         this.ingredients = ingredients;
         this.product = product;
         this.id = id;
-        this.quantity = quantity;
     }
 
     public List<Ingredient> getIngredients() {
@@ -40,13 +38,5 @@ public class Recipe {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public float getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(float quantity) {
-        this.quantity = quantity;
     }
 }

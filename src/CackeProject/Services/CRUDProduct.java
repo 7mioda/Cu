@@ -100,10 +100,11 @@ public class CRUDProduct {
             PreparedStatement statement =  DataBase.getInstance().getCnx().prepareStatement(query);
             statement.setInt(1,id);
             ResultSet result = statement.executeQuery();
-            product.setId(result.getInt(1));
-            product.setPrice(result.getDouble(3));
-            product.setQuantity(result.getFloat(4));
-            return product;
+            if(result.next()){
+                product.setId(result.getInt(1));
+                product.setPrice(result.getDouble(3));
+                product.setQuantity(result.getFloat(4));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
