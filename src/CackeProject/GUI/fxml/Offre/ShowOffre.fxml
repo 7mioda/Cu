@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="695.0" stylesheets="@../../styles/global.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CackeProject.GUI.controller.Offre.AddOfferController">
+   <children>
+      <AnchorPane fx:id="sidebar" prefHeight="518.0" prefWidth="95.0" style="-fx-background-color: #4F2F4F;">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="21.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="21.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/sale.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="21.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/cake.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="21.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/logout.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="21.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/order.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="21.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/analytics.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="show" layoutX="99.0" prefHeight="518.0" prefWidth="596.0" style="-fx-background-color: #4F2F4F;" />
+      <AnchorPane fx:id="add" layoutX="99.0" prefHeight="518.0" prefWidth="596.0" style="-fx-background-color: #4F2F4F;" />
+      <AnchorPane fx:id="edit" layoutX="99.0" prefHeight="518.0" prefWidth="596.0" style="-fx-background-color: #4F2F4F;">
+         <children>
+            <TextField fx:id="price" layoutX="26.0" layoutY="242.0" prefHeight="34.0" prefWidth="438.0" promptText="Prix de l'offre" />
+            <TextArea fx:id="description" layoutX="19.0" layoutY="291.0" prefHeight="113.0" prefWidth="558.0" promptText="Description" />
+            <Button fx:id="submitButton" layoutX="402.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="38.0" prefWidth="175.0" style="-fx-background-color: D2527F;" text="Ajouter Promotion" />
+            <TableView fx:id="products" layoutX="26.0" layoutY="13.0" prefHeight="220.0" prefWidth="438.0">
+              <columns>
+                <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="Name" prefWidth="75.0" text="Nom" />
+                  <TableColumn fx:id="Price" prefWidth="173.0" text="Prix" />
+                  <TableColumn fx:id="Quantity" prefWidth="105.0" text="Quantité" />
+              </columns>
+            </TableView>
+            <Button fx:id="backbutton" layoutX="211.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="38.0" prefWidth="175.0" style="-fx-background-color: D2527F;" text="Retour" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

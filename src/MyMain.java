@@ -26,6 +26,6 @@ import javafx.stage.Stage;
 public class MyMain {
 
     public static void main(String[] args) {
-        SMSApi.sendSms("+21699213630","rakez%20sdf%20sdf");
+        SMSApi.sendSms("+21625285192","rakez%20sdf%20sdf");
     }
 }
