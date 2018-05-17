@@ -3,7 +3,7 @@ package CackeProject.Entities;
 
 public class Product {
     private Category Category;
-    private Recipe Recipe;
+    private String Recipe;
     private int id;
     private String name;
     private double Price;
@@ -13,13 +13,6 @@ public class Product {
 
     }
 
-    public Product(CackeProject.Entities.Category category, CackeProject.Entities.Recipe recipe, String name, double price, float quantity) {
-        Category = category;
-        Recipe = recipe;
-        this.name = name;
-        Price = price;
-        Quantity = quantity;
-    }
 
     public CackeProject.Entities.Category getCategory() {
         return Category;
@@ -53,11 +46,11 @@ public class Product {
         Quantity = quantity;
     }
 
-    public CackeProject.Entities.Recipe getRecipe() {
+    public String getRecipe() {
         return Recipe;
     }
 
-    public void setRecipe(CackeProject.Entities.Recipe recipe) {
+    public void setRecipe(String recipe) {
         Recipe = recipe;
     }
 
@@ -70,15 +63,9 @@ public class Product {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-
-        Product product = (Product) o;
-
-        if (Double.compare(product.getPrice(), getPrice()) != 0) return false;
-        if (Float.compare(product.getQuantity(), getQuantity()) != 0) return false;
-        return getCategory().equals(product.getCategory());
+    public boolean equals(Object p) {
+        Product product = (Product) p;
+        return  product.getId() == this.getId();
     }
 
     @Override

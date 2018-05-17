@@ -1,9 +1,9 @@
-package CackeProject.Utils.RSSReader.Stores;
+package CackeProject.Services.RSSReader.Stores;
 
 
 
-import CackeProject.Utils.RSSReader.RSSFeedStore;
-import CackeProject.Utils.RSSReader.RSSItem;
+import CackeProject.Services.RSSReader.RSSFeedStore;
+import CackeProject.Services.RSSReader.RSSItem;
 import java.util.Collection;
 import java.util.HashMap;
 

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.FXMLCommandeController">
+   <children>
+      <AnchorPane layoutX="96.0" prefHeight="594.0" prefWidth="528.0" style="-fx-background-color: #4F2F4F;">
+         <children>
+            <Text fill="#e08ac6" layoutX="151.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commande">
+               <font>
+                  <Font name="Bell MT Bold" size="36.0" />
+               </font>
+            </Text>
+            <Button fx:id="recherche" layoutX="229.0" layoutY="132.0" mnemonicParsing="false" style="-fx-background-color: D2527F;" text="Recherche" />
+            <Button fx:id="consulter" layoutX="339.0" layoutY="491.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: D2527F;" text="consulter" />
+            <Button fx:id="ajouter" layoutX="240.0" layoutY="491.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: D2527F;" text="ajouter" />
+            <TextField fx:id="rechercher" layoutX="330.0" layoutY="132.0" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: white;" />
+            <Text fx:id="quantite" fill="#d2527f" layoutX="223.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="quantite">
+               <font>
+                  <Font name="Bell MT Bold" size="24.0" />
+               </font>
+            </Text>
+            <Spinner fx:id="qte" layoutX="330.0" layoutY="408.0" prefHeight="25.0" prefWidth="148.0" />
+            <TableView layoutX="313.0" layoutY="192.0" prefHeight="200.0" prefWidth="177.0">
+              <columns>
+                <TableColumn fx:id="prod" prefWidth="175.0" text="Produit" />
+              </columns>
+            </TableView>
+            <TableView fx:id="tablep" layoutX="39.0" layoutY="192.0" prefHeight="200.0" prefWidth="222.0">
+              <columns>
+                <TableColumn fx:id="id_Product" prefWidth="43.0" text="id" />
+                <TableColumn fx:id="patissier" prefWidth="177.0" text="Pattisier" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="sidebar" prefHeight="594.0" prefWidth="95.0" style="-fx-background-color: #4F2F4F;">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="21.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@CakeBmekni/CakeB/src/cakeb/GUI/images/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="21.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@CakeBmekni/CakeB/src/cakeb/GUI/images/sale.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="21.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@CakeBmekni/CakeB/src/cakeb/GUI/images/cake.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="21.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@CakeBmekni/CakeB/src/cakeb/GUI/images/logout.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="46.0" layoutX="21.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@CakeBmekni/CakeB/src/cakeb/GUI/images/order.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="21.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@CakeBmekni/CakeB/src/cakeb/GUI/images/analytics.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

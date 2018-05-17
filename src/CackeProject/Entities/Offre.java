@@ -4,6 +4,25 @@ public class Offre {
     private int id;
     private Product Product;
     private double Price;
+    private double Old_price;
+
+    public double getOld_price() {
+        return Old_price;
+    }
+
+    public void setOld_price(double old_price) {
+        Old_price = old_price;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    private String Description;
     private float Percentage;
 
     public Offre() {

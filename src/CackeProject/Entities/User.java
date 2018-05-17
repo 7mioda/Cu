@@ -2,6 +2,7 @@ package CackeProject.Entities;
 
 import CackeProject.Services.Secuirty;
 
+import java.io.File;
 import java.security.NoSuchAlgorithmException;
 
 
@@ -14,6 +15,12 @@ public class User{
     private String Adress;
     private String PhoneNum;
     private String Email;
+    private int State;
+    private String Role;
+    private String Taxeregnum;
+    private File imageProfil;
+
+    private static User instance = null;
     /**
      * Default Construct
      */
@@ -49,11 +56,8 @@ public class User{
         Username = username;
     }
     public void setPassword(String password) {
-        try {
-            this.password= Secuirty.getSecurePassword(password);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+            this.password= password;
+
     }
 
     public String getPassword() {
@@ -98,5 +102,44 @@ public class User{
 
     public void setEmail(String email) {
         Email = email;
+    }
+    public static User getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(User instance) {
+        User.instance = instance;
+    }
+
+    public int getState() {
+        return State;
+    }
+
+    public void setState(int state) {
+        State = state;
+    }
+
+    public String getRole() {
+        return Role;
+    }
+
+    public void setRole(String role) {
+        Role = role;
+    }
+
+    public String getTaxeregnum() {
+        return Taxeregnum;
+    }
+
+    public void setTaxeregnum(String taxeregnum) {
+        Taxeregnum = taxeregnum;
+    }
+
+    public File getImageProfil() {
+        return imageProfil;
+    }
+
+    public void setImageProfil(File imageProfil) {
+        this.imageProfil = imageProfil;
     }
 }

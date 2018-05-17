@@ -9,9 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by boukla7mid on 02/04/18.
- */
+
 public class CRUDOrderLine {
     public void addOrderLine(OrderLine orderLine ) {
 

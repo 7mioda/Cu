@@ -1,7 +1,6 @@
 package CackeProject.Services;
 
 import CackeProject.Entities.Category;
-import CackeProject.Entities.Unit;
 import CackeProject.Utils.DataBase;
 
 import java.sql.PreparedStatement;
@@ -18,7 +17,7 @@ public class CRUDCategory {
 
     public void addCategory(Category category) {
 
-        String query="INSERT INTO CapCake.Category(designation,unit) values(?,?)";
+        String query="INSERT INTO CupCake.Category(designation,unit) values(?,?)";
         try {
             PreparedStatement statement=(PreparedStatement) DataBase.getInstance().getCnx().prepareStatement(query);
             statement.setString(1, category.getDesignation());
@@ -31,7 +30,7 @@ public class CRUDCategory {
     }
 
     public void deleteCategory(int id){
-        String query="DELETE FROM CapCake.Category where id = ?";
+        String query="DELETE FROM CupCake.Category where id = ?";
         try {
             PreparedStatement statement=(PreparedStatement) DataBase.getInstance().getCnx().prepareStatement(query);
             statement.setInt(1,id);
@@ -43,7 +42,7 @@ public class CRUDCategory {
     }
 
     public void updateCategory(Category category,int id){
-        String query="UPDATE CapCake.Category SET designation=? , unit=? where id=? ";
+        String query="UPDATE CupCake.Category SET designation=? , unit=? where id=? ";
         try {
             PreparedStatement statement= DataBase.getInstance().getCnx().prepareStatement(query);
             statement.setString(1, category.getDesignation());
@@ -78,7 +77,7 @@ public class CRUDCategory {
     public Category showCategory(int id){
         Category category = new Category();
         try {
-            String query = "SELECT * FROM CapCake.Category WHERE id = ?";
+            String query = "SELECT * FROM CupCake.Category WHERE id = ?";
             PreparedStatement statement= DataBase.getInstance().getCnx().prepareStatement(query);
             statement.setInt(1,id);
             ResultSet result = statement.executeQuery();

@@ -1,4 +1,4 @@
-package CackeProject.Services;
+package CackeProject.Utils;
 
 
 import org.apache.http.HttpResponse;
@@ -20,8 +20,8 @@ public class SMSApi {
     public static void sendSms(String toPhoneNumber,String myMessage)  {
         try {
             HttpClient client =  HttpClients.createDefault();
-            HttpGet request = new HttpGet("http://cloud.fowiz.com/api/message_http_api.php?username=" + myUsername + "&phonenumber=" + toPhoneNumber
-                    + "&message=" + myMessage + "&passcode=" + myPasscode);
+            HttpGet request = new HttpGet("http://cloud.fowiz.com/api/message_http_api.php?username=" + myUsername + "&phonenumber=" + "00216"+toPhoneNumber
+                    + "&message=" + myMessage.replace(" ","%20") + "&passcode=" + myPasscode);
             HttpResponse response = client.execute(request);
 
             BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));

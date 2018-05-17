@@ -1,8 +1,7 @@
-package CackeProject.Utils;
+package CackeProject.Services.Sales_Managment;
 
 
 import CackeProject.Entities.FlashSale;
-import CackeProject.Services.CRUDFlashSale;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

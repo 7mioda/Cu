@@ -73,13 +73,15 @@ public class CRUDProduct {
     public List<Product> showProduct(){
         List<Product> myList = new ArrayList<>();
         try {
-            String query = "SELECT * FROM CapCake.Product";
+            String query = "SELECT * FROM CupCake.Product";
             Statement statement= DataBase.getInstance().getCnx().createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()){
                 Product product = new Product();
+                product.setId(result.getInt(1));
                 product.setPrice(result.getDouble(2));
                 product.setQuantity(result.getFloat(3));
+                product.setName(result.getString(5));
                 myList.add(product);
             }
         } catch (SQLException e) {
@@ -102,8 +104,9 @@ public class CRUDProduct {
             ResultSet result = statement.executeQuery();
             if(result.next()){
                 product.setId(result.getInt(1));
-                product.setPrice(result.getDouble(3));
-                product.setQuantity(result.getFloat(4));
+                product.setPrice(result.getDouble(2));
+                product.setQuantity(result.getFloat(3));
+                product.setName(result.getString(5));
             }
         } catch (SQLException e) {
             e.printStackTrace();

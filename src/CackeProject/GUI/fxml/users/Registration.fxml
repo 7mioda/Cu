@@ -2,100 +2,85 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" prefHeight="591.0" prefWidth="567.0" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="CackeProject.GUI.controller.registration.RegistrationController">
-   <padding><Insets bottom="40" left="40" right="40" top="40" /></padding>
-   <columnConstraints>
-      <ColumnConstraints halignment="RIGHT" maxWidth="Infinity" minWidth="100" prefWidth="200.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="697.0" stylesheets="@../../styles/global.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CackeProject.GUI.controller.User.RegistrationController">
+   <children>
+      <AnchorPane fx:id="edit" layoutX="-1.0" layoutY="-1.0" prefHeight="546.0" prefWidth="697.0" style="-fx-background-color: #4F2F4F;">
+         <children>
+                  
+                                  <GridPane alignment="center" hgap="10" layoutX="74.0" layoutY="-7.0" prefHeight="529.0" prefWidth="368.0" vgap="10">
+      <padding>
+      <Insets bottom="40" left="40" right="40" top="40" />
+      </padding>
+      <columnConstraints>
+      <ColumnConstraints halignment="RIGHT" maxWidth="Infinity" minWidth="0.0" prefWidth="0.0">
       </ColumnConstraints>
-      <ColumnConstraints hgrow="ALWAYS" maxWidth="Infinity" minWidth="200" prefWidth="200">
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="Infinity" minWidth="200.0" prefWidth="522.0">
       </ColumnConstraints>
-   </columnConstraints>
-
-   <!-- Add Header Label -->
-   <Label text="Registration Form (FXML)" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="1">
-      <font>
-         <Font name="Arial" size="24" />
-      </font>
-      <GridPane.margin>
-         <Insets bottom="20" left="0" right="0" top="20" />
-      </GridPane.margin>
-   </Label>
-
-
-
-   <!-- Add Name Label -->
-   <Label text="Full Name : " GridPane.columnIndex="0" GridPane.rowIndex="1">
-   </Label>
-   <!-- Add Name Text Field -->
-   <TextField fx:id="nameField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-   <!-- Add Surname Label -->
-   <Label text="Surname : " GridPane.columnIndex="0" GridPane.rowIndex="2">
-   </Label>
-   <!-- Add Surname Field -->
-   <TextField fx:id="surnameField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-   <!-- Add Adress Label -->
-   <Label text="Adress : " GridPane.columnIndex="0" GridPane.rowIndex="3">
-   </Label>
-   <!-- Add Adresse Field -->
-   <TextField fx:id="adressField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-   <!-- Add Phone Label -->
-   <Label text="Num tel: " GridPane.columnIndex="0" GridPane.rowIndex="4">
-   </Label>
-   <!-- Add Phone Field -->
-   <TextField fx:id="phoneField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-
-   <!-- Add Email Label -->
-   <Label text="Login: " GridPane.columnIndex="0" GridPane.rowIndex="5">
-   </Label>
-   <!-- Add Email Text Field -->
-   <TextField fx:id="loginField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-
-   <!-- Add Email Label -->
-   <Label text="Email: " GridPane.columnIndex="0" GridPane.rowIndex="6">
-   </Label>
-   <!-- Add Email Text Field -->
-   <TextField fx:id="emailField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-
-
-
-   <!-- Add Password Label -->
-   <Label text="Password : " GridPane.columnIndex="0" GridPane.rowIndex="7">
-   </Label>
-   <!-- Add Password Field -->
-   <PasswordField fx:id="passwordField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-
-   <!-- Add Confirm Password Label -->
-   <Label prefHeight="16.0" prefWidth="141.0" text="Confirm Password : " GridPane.columnIndex="0" GridPane.rowIndex="8">
-   </Label>
-   <!-- Add Confirm Password Field -->
-   <PasswordField fx:id="confirmPasswordField" prefHeight="40" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-
-   <!-- Add Submit Button -->
-   <Button fx:id="submitButton" defaultButton="true" onAction="#handleSubmitButtonAction" prefHeight="40" prefWidth="100" text="Submit" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.rowSpan="1">
-      <GridPane.margin>
-         <Insets bottom="20" left="0" right="0" top="20" />
-      </GridPane.margin>
+      </columnConstraints>
+      <!-- Add Name Text Field -->
+      <TextField fx:id="nameField" prefHeight="40" prefWidth="235.0" promptText="Saisir votre nom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <!-- Add Surname Field -->
+      <TextField fx:id="surnameField" prefHeight="40" promptText="Saisir votre prénom" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <!-- Add Adresse Field -->
+      <TextField fx:id="adressField" prefHeight="40" promptText="Entrer votre adresse" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <!-- Add Phone Field -->
+      <TextField fx:id="phoneField" prefHeight="40" promptText="Entrer votre numero de telephone" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <!-- Add Email Text Field -->
+      <TextField fx:id="loginField" prefHeight="40" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <!-- Add Email Text Field -->
+      <TextField fx:id="emailField" prefHeight="40" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <!-- Add Password Field -->
+      <PasswordField fx:id="passwordField" prefHeight="40" promptText="Mot de passe" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <!-- Add Confirm Password Field -->
+      <PasswordField fx:id="confirmPasswordField" prefHeight="40" promptText="Retapez votre mot de passe" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <ComboBox fx:id="roleCB" onAction="#comboAction" prefHeight="42.0" prefWidth="257.0" promptText="Type du Compte" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <!-- Add Tax Text Field -->
+      <TextField fx:id="TaxField" prefHeight="40" prefWidth="235.0" promptText="Identité fiscale" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      
+      <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+                  <RowConstraints />
+      </rowConstraints>
+      </GridPane>
+   
+                     <!-- Add Submit Button -->
+   <Button fx:id="CanselBTN" defaultButton="true" layoutX="556.0" layoutY="469.0" onAction="#ReternToLogin" prefHeight="36.0" prefWidth="117.0" text="Annuler" textAlignment="JUSTIFY" textFill="#9e0505">
+   <font>
+      <Font name="System Bold" size="15.0" />
+   </font>
    </Button>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-</GridPane>
+   <Button fx:id="ValiderUser" defaultButton="true" layoutX="426.0" layoutY="469.0" onAction="#Add_User" prefHeight="40.0" prefWidth="117.0" text="S'inscrire" textFill="#1e7222">
+   <font>
+      <Font name="System Bold" size="15.0" />
+   </font>
+   </Button>
+            <ImageView fitHeight="90.0" fitWidth="101.0" layoutX="525.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/cake.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -18,7 +18,7 @@ public class DataBase {
      *
      */
     public DataBase() {
-        this.url = "jdbc:mysql://localhost:3306/CapCake";
+        this.url = "jdbc:mysql://localhost:3306/CupCake";
         this.login = "root";
         this.password = "123456789";
         try {

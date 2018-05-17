@@ -1,8 +1,10 @@
-package CackeProject.GUI.controller.FlashSale;
+package CackeProject.GUI.controller.Offre;
 
 import CackeProject.Entities.FlashSale;
+import CackeProject.Entities.Offre;
+import CackeProject.Entities.User;
 import CackeProject.Interfaces.FlashSaleInterface;
-import CackeProject.Services.Sales_Managment.CRUDFlashSale;
+import CackeProject.Services.Sales_Managment.CRUDOffer;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -21,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.PixelFormat.Type;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -29,7 +32,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 
 public class ShowAdminController implements Initializable, FlashSaleInterface {
@@ -37,35 +39,31 @@ public class ShowAdminController implements Initializable, FlashSaleInterface {
     @FXML
     private Button Ajouter;
     @FXML
-    private TableView<FlashSale> flashSaleTableView;
+    private TableView<Offre> offerTableView;
     @FXML
     private TableColumn<FlashSale, String> ID;
     @FXML
-    private TableColumn<FlashSale, String> Description;
-    @FXML
     private TableColumn<FlashSale, String> Price;
     @FXML
-    private TableColumn<FlashSale, String> State;
+    private TableColumn<FlashSale, String> Old_Price;
     @FXML
     private TableColumn<Type,Boolean> Action;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
-        CRUDFlashSale crudFlashSale = new CRUDFlashSale();
-        ArrayList<FlashSale> myList = (ArrayList<FlashSale>) crudFlashSale.showFlashSale();
+        CRUDOffer crudOffer = new CRUDOffer();
+        ArrayList<Offre> myList = (ArrayList<Offre>) crudOffer.showOfferByUser(User.getInstance().getId());
 
-        ObservableList<FlashSale> myOb=FXCollections.observableArrayList(myList);
-      //  flashSaleTableView.setItems(myOb);
+        ObservableList<Offre> myOb = FXCollections.observableArrayList(myList);
 
         ID.setCellValueFactory(
                 new PropertyValueFactory<>("id"));
-        Description.setCellValueFactory(
-                new PropertyValueFactory<>("Description"));
         Price.setCellValueFactory(
-                new PropertyValueFactory<>("Price"));
-        State.setCellValueFactory(
-                new PropertyValueFactory<>("State"));
+                new PropertyValueFactory<>("price"));
+        Old_Price.setCellValueFactory(
+                new PropertyValueFactory<>("old_price"));
+
 
         Action.setSortable(false);
         Action.setCellValueFactory(
@@ -86,114 +84,184 @@ public class ShowAdminController implements Initializable, FlashSaleInterface {
 
                 });
 
-        flashSaleTableView.setItems(myOb);
+        offerTableView.setItems(myOb);
 
     }
 
 
-private class ButtonCell extends TableCell<Type, Boolean> {
+    private class ButtonCell extends TableCell<Type, Boolean> {
 
-    final Button cellButton3 = new Button("Consulter");
-    final Button cellButton2 = new Button("+");
-    final Button cellButton = new Button("-");
-
-
-
-    ButtonCell() {
-        CRUDFlashSale p = new CRUDFlashSale();
-        cellButton.setOnAction(new EventHandler<ActionEvent>() {
+        final Button cellButton3 = new Button("Consulter");
+        final Button cellButton2 = new Button("+");
+        final Button cellButton = new Button("-");
 
 
-            @Override
-            public void handle(ActionEvent t) {
 
-                int id = flashSaleTableView.getSelectionModel().getSelectedItem().getId();
-                p.deleteFlashSale(id);
-                System.out.print(id);
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/CackeProject/GUI/fxml/FlashSale/ShowAdmin.fxml"));
-                    Parent root = loader.load();
-                    Scene scene = new Scene(root);
-                    Stage stage = (Stage) ((Node) t.getSource()).getScene().getWindow();
-                    stage.setTitle("you are in your Login page");
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException ex) {
-                    System.err.print("unknow err");
+        ButtonCell() {
+            CRUDOffer p = new CRUDOffer();
+
+            cellButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent t) {
+
+                    int id = offerTableView.getSelectionModel().getSelectedItem().getId();
+                    p.deleteOffer(id);
+                    System.out.print(id);
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CackeProject/GUI/fxml/Offre/ShowAdmin.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = new Scene(root);
+                        Stage stage = (Stage) ((Node) t.getSource()).getScene().getWindow();
+                        stage.setTitle("you are in your Login page");
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException ex) {
+                        System.err.print("unknow err");
+                    }
+
                 }
-
-            }
-        });
+            });
 
 
-        cellButton2.setOnAction(new EventHandler<ActionEvent>() {
+            cellButton2.setOnAction(new EventHandler<ActionEvent>() {
 
-            @Override
-            public void handle(ActionEvent t) {
+                @Override
+                public void handle(ActionEvent t) {
 
-                int id = flashSaleTableView.getSelectionModel().getSelectedItem().getId();
-                System.out.print(id);
-               try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/CackeProject/GUI/fxml/FlashSale/AddFlashSale.fxml"));
-                    Parent root = loader.load();
-                   Scene scene = new Scene(root);
-                   Stage stage = (Stage) ((Node) t.getSource()).getScene().getWindow();
-                   stage.setTitle("you are in your Login page");
-                   stage.setScene(scene);
-                   stage.show();
-                } catch (IOException ex) {
-                    System.err.print("unknow err");
+                    int id = offerTableView.getSelectionModel().getSelectedItem().getId();
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CackeProject/GUI/fxml/Offre/EditOffre.fxml"));
+                        Parent root = loader.load();
+                        EditOfferController controller = loader.getController();
+                        controller.initVariable(id);
+                        Scene scene = new Scene(root);
+                        Stage stage = (Stage) ((Node) t.getSource()).getScene().getWindow();
+                        stage.setTitle("Edition");
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException ex) {
+                        System.err.print("unknow err");
+                    }
                 }
-            }
-        });
+            });
 
 
-        cellButton3.setOnAction(new EventHandler<ActionEvent>() {
+            cellButton3.setOnAction(new EventHandler<ActionEvent>() {
 
+                @Override
+                public void handle(ActionEvent t) {
 
-            @Override
-            public void handle(ActionEvent t) {
-
-                int id = flashSaleTableView.getSelectionModel().getSelectedItem().getId();
-                p.deleteFlashSale(id);
-                System.out.print(id);
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/CackeProject/GUI/fxml/FlashSale/EditFlashSale.fxml"));
-                    Parent root = loader.load();
-                    Scene scene = new Scene(root);
-                    Stage stage = (Stage) ((Node) t.getSource()).getScene().getWindow();
-                    stage.setTitle("you are in your Login page");
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException ex) {
-                    System.err.print("unknow err");
+                    int id = offerTableView.getSelectionModel().getSelectedItem().getId();
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CackeProject/GUI/fxml/Offre/ShowOffre.fxml"));
+                        Parent root = loader.load();
+                        ShowOfferController controller = loader.getController();
+                        controller.initVariable(id);
+                        Scene scene = new Scene(root);
+                        Stage stage = (Stage) ((Node) t.getSource()).getScene().getWindow();
+                        stage.setTitle("you are in your Login page");
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException ex) {
+                        System.err.print(ex.getMessage());
+                    }
                 }
-            }
-        });
+            });
 
-    }
-
-
-    //Display button if the row is not empty
-    @Override
-    protected void updateItem(Boolean t, boolean empty) {
-        super.updateItem(t, empty);
-        if(!empty){
-            HBox pane = new HBox(cellButton3, cellButton2,cellButton);
-            setGraphic(pane);
         }
-    }
 
-}
+
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+                HBox pane = new HBox(cellButton3, cellButton2,cellButton);
+                setGraphic(pane);
+            }
+        }
+
+    }
     @FXML
     protected void handleSubmitButtonAction(ActionEvent event) {
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CackeProject/GUI/fxml/FlashSale/AddFlashSale.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CackeProject/GUI/fxml/Offre/AddOffre.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("AddFlashSale");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.err.print("unknow err");
+        }
+    }
+
+    @FXML
+    private void LogOUT(MouseEvent event) throws IOException {
+        System.out.println("you have been Logged out");
+
+        Parent subscibe_page = FXMLLoader.load(getClass().getResource("/CackeProject/GUI/fxml/users/Login.fxml"));
+        System.out.println("ROOT login !");
+
+        Scene scene = new Scene(subscibe_page);
+        System.out.println("NEW SCENE login Retour!");
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setTitle("Login page");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void RSS(MouseEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("/CackeProject/GUI/fxml/RSS/Show.fxml"));
+        Scene scene = new Scene(page);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("RSS");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void FlashsaleAdmin(MouseEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("/CackeProject/GUI/fxml/FlashSale/ShowAdmin.fxml"));
+        Scene scene = new Scene(page);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("FlashSale");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void Analytics(MouseEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("/CackeProject/GUI/fxml/analytics/Statistique.fxml"));
+        Scene scene = new Scene(page);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Statistique");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void Products(MouseEvent event) throws IOException {
+        Parent page = FXMLLoader.load(getClass().getResource("/CackeProject/GUI/fxml/product/AddProduct.fxml"));
+        Scene scene = new Scene(page);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Statistique");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    protected void handleBackFlashsaleAction(ActionEvent event) {
+        try {
+            Parent page = FXMLLoader.load(getClass().getResource("/CackeProject/GUI/fxml/FlashSale/ShowAdmin.fxml"));
+            Scene scene = new Scene(page);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("FlashSale");
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {

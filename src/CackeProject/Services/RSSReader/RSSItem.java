@@ -1,4 +1,4 @@
-package CackeProject.Utils.RSSReader;
+package CackeProject.Services.RSSReader;
 
 import java.util.Date;
 
